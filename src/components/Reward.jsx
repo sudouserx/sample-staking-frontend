@@ -29,9 +29,6 @@ const Reward = ({ reward, handleClaimReward, handleMint, tokenAmount, setTokenAm
               <Button variant="dark" onClick={handleClaimReward}>
                 <i className="fas fa-coins"></i>Claim Reward
               </Button>
-              {/* <Button variant="dark" onClick={handleMint} size="lg">
-                Mint
-              </Button> */}
               <Form className="d-flex">
                 <Form.Control
                   type="number"
@@ -55,7 +52,9 @@ const Reward = ({ reward, handleClaimReward, handleMint, tokenAmount, setTokenAm
                 value={tokenAmount}
                 onChange={(e) => setTokenAmount(e.target.value)}
               />
-              <Button variant="dark" onClick={handleMint} >Mint</Button>
+              <Button variant="dark" onClick={handleMint} style={{
+                margin: "auto 5px"
+              }} >Mint</Button>
             </Form>
           </div>
         )}

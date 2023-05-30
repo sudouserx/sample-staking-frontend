@@ -6,8 +6,7 @@ import NavBar from "./components/NavBar";
 import Reward from "./components/Reward";
 import Stake from "./components/Stake";
 import Unstake from "./components/Unstake";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 const CONTRACT_ADDRESS = "0xc6323Ff226Cf94CD925206006bF83894d649aBaC";
 const TOKEN_ADDRESS = "0x8c83c2642b923025ACfbeE0D4A395658458d19e2";
@@ -87,6 +86,7 @@ const App = () => {
     } catch (error) {
       // Handle error during stake transaction
     }
+    setStakeAmount("");
   };
 
   const handleUnstake = async () => {
@@ -100,6 +100,7 @@ const App = () => {
     } catch (error) {
       // Handle error during unstake transaction
     }
+    setUnstakeAmount("");
   };
 
   const handleConnect = async () => {
@@ -117,22 +118,18 @@ const App = () => {
     <div>
       <NavBar account={account} handleConnect={handleConnect} />
       <Reward reward={reward} handleClaimReward={handleClaimReward} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
-      <Row>
-        <Col>
-          <Stake
-            stakeAmount={stakeAmount}
-            setStakeAmount={setStakeAmount}
-            handleStake={handleStake}
-          />
-        </Col>
-        <Col>
-          <Unstake
-            unstakeAmount={unstakeAmount}
-            setUnstakeAmount={setUnstakeAmount}
-            handleUnstake={handleUnstake}
-          />
-        </Col>
-      </Row>
+      <Container fluid>
+        <Stake
+          stakeAmount={stakeAmount}
+          setStakeAmount={setStakeAmount}
+          handleStake={handleStake}
+        />
+        <Unstake
+          unstakeAmount={unstakeAmount}
+          setUnstakeAmount={setUnstakeAmount}
+          handleUnstake={handleUnstake}
+        />
+      </Container>
     </div>
   );
 };

@@ -7,7 +7,11 @@ const Stake = ({ stakeAmount, setStakeAmount, handleStake }) => {
       className="stake"
       style={{ width: "90%", padding: "0%", margin: "auto" }}
     >
-      <h2>Stake</h2>
+      <h2 style={{
+        textAlign:"center"
+      }}>Stake</h2>
+
+      <br />
 
       <Form>
         <Form.Group className="mb-3">
@@ -19,7 +23,7 @@ const Stake = ({ stakeAmount, setStakeAmount, handleStake }) => {
             onChange={(e) => setStakeAmount(e.target.value)}
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            Enter the token amount you want to stake
           </Form.Text>
         </Form.Group>
 

@@ -1,13 +1,17 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const Unstake = ({unstakeAmount, setUnstakeAmount, handleUnstake}) => {
+const Unstake = ({ unstakeAmount, setUnstakeAmount, handleUnstake }) => {
   return (
     <div
       className="unstake"
       style={{ width: "90%", padding: "0%", margin: "auto" }}
     >
-      <h2>Unstake</h2>
+      <h2 style={{
+        textAlign: "center"
+      }}>Unstake</h2>
+
+      <br />
       <Form>
         <Form.Group className="mb-3">
           <Form.Label>Token amount</Form.Label>
@@ -18,7 +22,7 @@ const Unstake = ({unstakeAmount, setUnstakeAmount, handleUnstake}) => {
             onChange={(e) => setUnstakeAmount(e.target.value)}
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            Enter the token amount you want to unstake
           </Form.Text>
         </Form.Group>
 

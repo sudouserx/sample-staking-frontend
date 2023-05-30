@@ -6,8 +6,6 @@ import NavBar from "./components/NavBar";
 import Reward from "./components/Reward";
 import Stake from "./components/Stake";
 import Unstake from "./components/Unstake";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 const CONTRACT_ADDRESS = "0xc6323Ff226Cf94CD925206006bF83894d649aBaC";

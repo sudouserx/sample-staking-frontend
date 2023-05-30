@@ -7,6 +7,9 @@ import Reward from "./components/Reward";
 import Stake from "./components/Stake";
 import Unstake from "./components/Unstake";
 import Container from "react-bootstrap/Container";
+import Actions from "./components/Actions";
+import StakesTable from "./components/StakesTable";
+import MintModal from "./components/MintModal";
 
 const CONTRACT_ADDRESS = "0xc6323Ff226Cf94CD925206006bF83894d649aBaC";
 const TOKEN_ADDRESS = "0x8c83c2642b923025ACfbeE0D4A395658458d19e2";
@@ -114,10 +117,20 @@ const App = () => {
       console.error(err.message);
     }
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   return (
     <div>
       <NavBar account={account} handleConnect={handleConnect} />
-      <Reward reward={reward} handleClaimReward={handleClaimReward} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+      <Actions />
+      <MintModal show={show} handleClose={handleClose} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+      <StakesTable />
+      {/* <Reward reward={reward} handleClaimReward={handleClaimReward} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
       <Container fluid>
         <Stake
           stakeAmount={stakeAmount}
@@ -129,7 +142,7 @@ const App = () => {
           setUnstakeAmount={setUnstakeAmount}
           handleUnstake={handleUnstake}
         />
-      </Container>
+      </Container> */}
     </div>
   );
 };

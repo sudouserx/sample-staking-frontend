@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 const NavBar = ({ account, handleConnect }) => {
   console.log(account);
   return (
-    <Navbar bg="secondary" expand="lg" style={{ height: "80px" }}>
+    <Navbar expand="lg" style={{ height: "150px", background: "#4BC6D7" }}>
       <Container fluid>
         <Navbar.Brand href="/"><h1>Defi Staking App</h1></Navbar.Brand>
         {account ? (

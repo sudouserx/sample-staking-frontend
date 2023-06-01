@@ -1,12 +1,13 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
-const MintModal = ({ show, handleClose, handleMint, tokenAmount, setTokenAmouont }) => {
+const MintModal = ({ show, handleMintClose, handleMint, tokenAmount, setTokenAmount }) => {
+    
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleMintClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Mint</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -16,7 +17,7 @@ const MintModal = ({ show, handleClose, handleMint, tokenAmount, setTokenAmouont
                                 type="number"
                                 placeholder="Enter amount"
                                 value={tokenAmount}
-                                onChange={(e) => setTokenAmouont(e.target.value)}
+                                onChange={(e) => setTokenAmount(e.target.value)}
                             />
                             <Form.Text className="text-muted">
                                 Enter the token amount you want to mint
@@ -25,7 +26,7 @@ const MintModal = ({ show, handleClose, handleMint, tokenAmount, setTokenAmouont
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleMintClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleMint}>

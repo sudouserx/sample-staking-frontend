@@ -1,12 +1,13 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
-const StakeModal = ({ show, handleClose, handleStake, stakeAmount, setStakeAmount }) => {
+const StakeModal = ({ show, handleStakeClose, handleStake, stakeAmount, setStakeAmount }) => {
 
+    
     return (
         <div>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleStakeClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Stake</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -25,7 +26,7 @@ const StakeModal = ({ show, handleClose, handleStake, stakeAmount, setStakeAmoun
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleStakeClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleStake}>

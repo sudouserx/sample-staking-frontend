@@ -1,12 +1,12 @@
 import { Modal, Button, Form } from "react-bootstrap";
 
-const UnstakeModal = ({ show, handleClose, handleUnstake, UnstakeAmount, setUnstakeAmount }) => {
+const UnstakeModal = ({ show, handleUnstakeClose, handleUnstake, UnstakeAmount, setUnstakeAmount }) => {
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleUnstakeClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title>Unstake</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -25,7 +25,7 @@ const UnstakeModal = ({ show, handleClose, handleUnstake, UnstakeAmount, setUnst
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="secondary" onClick={handleUnstakeClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleUnstake}>

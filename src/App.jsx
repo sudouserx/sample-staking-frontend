@@ -10,6 +10,8 @@ import Container from "react-bootstrap/Container";
 import Actions from "./components/Actions";
 import StakesTable from "./components/StakesTable";
 import MintModal from "./components/MintModal";
+import StakeModal from "./components/StakeModal";
+import UnstakeModal from "./components/UnstakeModal";
 
 const CONTRACT_ADDRESS = "0xc6323Ff226Cf94CD925206006bF83894d649aBaC";
 const TOKEN_ADDRESS = "0x8c83c2642b923025ACfbeE0D4A395658458d19e2";
@@ -31,6 +33,23 @@ const App = () => {
   const [balance, setBalance] = useState("");
   const [tokenAmount, setTokenAmount] = useState("");
   var currentReward = 0;
+
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const balance = await tokenContract.balanceOf(
+          ethers.utils.getAddress(account)
+        );
+        setBalance(ethers.utils.formatEther(balance));
+      } catch (err) {
+        console.log(err);
+      }
+
+
+    }
+    fetchBalance();
+  }, [account])
 
   useEffect(() => {
     const fetchReward = async () => {
@@ -118,17 +137,27 @@ const App = () => {
     }
   };
 
-  const [show, setShow] = useState(false);
+  const [showMintModal, setShowMintModal] = useState(false);
+  const handleMintClose = () => setShowMintModal(false);
+  const handleMintShow = () => setShowMintModal(true);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showStakeModal, setShowStakeModal] = useState(false);
+  const handleStakeClose = () => setShowStakeModal(false);
+  const handleStakeShow = () => setShowStakeModal(true);
+
+  const [showUnstakeModal, setShowUnstakeModal] = useState(false);
+  const handleUnstakeClose = () => setShowUnstakeModal(false);
+  const handleUnstakeShow = () => setShowUnstakeModal(true);
 
 
   return (
     <div>
-      <NavBar account={account} handleConnect={handleConnect} />
-      <Actions />
-      <MintModal show={show} handleClose={handleClose} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+      <NavBar account={account} handleConnect={handleConnect} balance={balance} />
+      <Actions handleMintShow={handleMintShow} handleStakeShow={handleStakeShow} handleUnstakeShow={handleUnstakeShow} handleClaimReward={handleClaimReward} handleStake={handleStake} handleUnstake={handleUnstake} reward={reward} />
+      <MintModal show={showMintModal} handleMintClose={handleMintClose} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+      <StakeModal show={showStakeModal} handleStakeClose={handleStakeClose} handleStake={handleStake} stakeAmount={stakeAmount} setStakeAmount={setStakeAmount} />
+      <UnstakeModal show={showUnstakeModal} handleUnstakeClose={handleUnstakeClose} handleUnstake={handleUnstake} unstakeAmount={unstakeAmount} setUnstakeAmount={setUnstakeAmount} />
+
       <StakesTable />
       {/* <Reward reward={reward} handleClaimReward={handleClaimReward} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
       <Container fluid>

@@ -1,6 +1,6 @@
 import { Container, Button } from "react-bootstrap";
 
-const Actions = () => {
+const Actions = ({reward, handleClaimReward, handleMintShow, handleStakeShow, handleUnstakeShow}) => {
 
     return (
         <Container fluid style={{
@@ -18,8 +18,8 @@ const Actions = () => {
                 width: "100%",
                 maxWidth: "auto",
             }}>
-                <h1>Rewards</h1>
-                <Button>Claim reward</Button>
+                <h1>{'$' + reward}</h1>
+                <Button onClick={handleClaimReward}>Claim reward</Button>
             </div>
             <div className="actions" style={{
                 display: "flex",
@@ -29,9 +29,9 @@ const Actions = () => {
                 width: "100%",
                 maxWidth: "auto",
             }}>
-                <Button>Mint</Button>
-                <Button>Stake</Button>
-                <Button>Unstake</Button>
+                <Button onClick={handleMintShow}>Mint</Button>
+                <Button onClick={handleStakeShow}>Stake</Button>
+                <Button onClick={handleUnstakeShow}>Unstake</Button>
             </div>
         </Container>
     )

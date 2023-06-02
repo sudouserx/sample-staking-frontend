@@ -3,10 +3,14 @@ import { ethers } from "ethers";
 import stakingAbi from "../src/abi/StakingContract.json";
 import tokenAbi from "../src/abi/TokenContract.json";
 import NavBar from "./components/NavBar";
-import Reward from "./components/Reward";
-import Stake from "./components/Stake";
-import Unstake from "./components/Unstake";
-import Container from "react-bootstrap/Container";
+import Actions from "./components/Actions";
+import StakesTable from "./components/StakesTable";
+import MintModal from "./components/MintModal";
+import StakeModal from "./components/StakeModal";
+import UnstakeModal from "./components/UnstakeModal";
+import Footer from "./components/Footer";
+import "./App.css";
+
 
 const CONTRACT_ADDRESS = "0xc6323Ff226Cf94CD925206006bF83894d649aBaC";
 const TOKEN_ADDRESS = "0x8c83c2642b923025ACfbeE0D4A395658458d19e2";
@@ -29,6 +33,23 @@ const App = () => {
   const [tokenAmount, setTokenAmount] = useState("");
   var currentReward = 0;
 
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      try {
+        const balance = await tokenContract.balanceOf(
+          ethers.utils.getAddress(account)
+        );
+        setBalance(ethers.utils.formatEther(balance));
+      } catch (err) {
+        console.log(err);
+      }
+
+
+    }
+    fetchBalance();
+  }, [account])
+
   useEffect(() => {
     const fetchReward = async () => {
       try {
@@ -42,7 +63,6 @@ const App = () => {
     };
     fetchReward();
   }, [account]);
-  // console.log(reward)
 
   const handleMint = async () => {
     try {
@@ -114,22 +134,39 @@ const App = () => {
       console.error(err.message);
     }
   };
+
+  const [showMintModal, setShowMintModal] = useState(false);
+  const handleMintClose = () => setShowMintModal(false);
+  const handleMintShow = () => setShowMintModal(true);
+
+  const [showStakeModal, setShowStakeModal] = useState(false);
+  const handleStakeClose = () => setShowStakeModal(false);
+  const handleStakeShow = () => setShowStakeModal(true);
+
+  const [showUnstakeModal, setShowUnstakeModal] = useState(false);
+  const handleUnstakeClose = () => setShowUnstakeModal(false);
+  const handleUnstakeShow = () => setShowUnstakeModal(true);
+
+
   return (
-    <div>
-      <NavBar account={account} handleConnect={handleConnect} />
-      <Reward reward={reward} handleClaimReward={handleClaimReward} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
-      <Container fluid>
-        <Stake
-          stakeAmount={stakeAmount}
-          setStakeAmount={setStakeAmount}
-          handleStake={handleStake}
-        />
-        <Unstake
-          unstakeAmount={unstakeAmount}
-          setUnstakeAmount={setUnstakeAmount}
-          handleUnstake={handleUnstake}
-        />
-      </Container>
+    <div className="App" style={{
+      margin: "0",
+      // padding: "0",
+    }}>
+      <>
+        <NavBar account={account} handleConnect={handleConnect} balance={balance} />
+      </>
+      < div style={{
+        width: "100%",
+        height: "100%",
+      }}>
+        <Actions handleMintShow={handleMintShow} handleStakeShow={handleStakeShow} handleUnstakeShow={handleUnstakeShow} handleClaimReward={handleClaimReward} handleStake={handleStake} handleUnstake={handleUnstake} reward={reward} />
+        <MintModal show={showMintModal} handleMintClose={handleMintClose} handleMint={handleMint} tokenAmount={tokenAmount} setTokenAmount={setTokenAmount} />
+        <StakeModal show={showStakeModal} handleStakeClose={handleStakeClose} handleStake={handleStake} stakeAmount={stakeAmount} setStakeAmount={setStakeAmount} />
+        <UnstakeModal show={showUnstakeModal} handleUnstakeClose={handleUnstakeClose} handleUnstake={handleUnstake} unstakeAmount={unstakeAmount} setUnstakeAmount={setUnstakeAmount} />
+        <StakesTable />
+      </ div>
+      <Footer />
     </div>
   );
 };

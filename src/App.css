@@ -1,9 +1,3 @@
-
-button {
-    margin: 5px 5px;
-    padding: 5px 5px;
-}
-
-.box {
-    margin: 10px auto;
+.App {
+    font-family: sans-serif;
 }

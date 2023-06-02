@@ -4,7 +4,7 @@ import { Table, Container } from "react-bootstrap";
 const StakesTable = () => {
     return (
         <Container className="mt-5" fluid style={{
-            margin: "0  auto",
+            margin: "0 0 100px auto",
         }}>
             <Table striped bordered hover >
                 <thead>
@@ -27,6 +27,41 @@ const StakesTable = () => {
                     </tr>
                     <tr>
                         <th scope="row">3</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">8</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">9</th>
+                        <td>0x78763...</td>
+                        <td>0.9654 MTK</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">10</th>
                         <td>0x78763...</td>
                         <td>0.9654 MTK</td>
                     </tr>

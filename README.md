@@ -27,8 +27,8 @@ The backend code for CampusCompass can be found [here](https://github.com/sudous
 
 To run CampusCompass locally, follow these steps:
 
-1. Clone the frontend repository from [here](https://github.com/sudouserx/looking-for-frontend.git) and install the frontend dependencies using `yarn add`.
-2. Clone the backend repository from [here](https://github.com/sudouserx/looking_for_backend.git) and install the backend dependencies using `yarn add`.
+1. Clone the frontend repository from [here](https://github.com/sudouserx/looking-for-frontend.git) and install the frontend dependencies using `yarn`.
+2. Clone the backend repository from [here](https://github.com/sudouserx/looking_for_backend.git) and install the backend dependencies using `yarn`.
 3. Start the frontend server using `yarn dev` in the frontend directory.
 4. Start the backend server using `yarn dev` in the backend directory.
 
